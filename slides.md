@@ -54,16 +54,10 @@ transition: fade-out
 
 - 📝 **บทนํา** - ภาพรวมของตัวโครงงาน
 - 🎨 **ระเบียบวิธีวิจัย** - ขั้นตอนตั้งแต่การออกแบบและเป้าหมายการพัฒนา
-- 🧑 **ซอฟแวร์และอุปกรณ์ที่ใช้** - เทคโนโลยีที่ใช้ในการสร้างและพัฒนาชิ้นงาน
-- 🤹 **ความคืบหน้า** - สรุปความคืบหน้าทั้งหมดนับจากการนำเสนอครั้งล่าสุด
+- 🤹 **สรุปความคืบหน้า** - สรุปความคืบหน้าทั้งหมดนับจากการนำเสนอครั้งล่าสุด
 - 🎥 **ชิ้นงาน** - นำเสนอชิ้นงานที่สมบูรณ์แล้ว
 <br>
 <br>
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
 
 <style>
 h1 {
@@ -96,204 +90,89 @@ uint_32t Payload = Malware + Insecure trust;
 <Toc text-sm minDepth="1" maxDepth="2" />
 
 ---
-layout: image-right
-image: https://cover.sli.dev
+transition: fade-out
 ---
 
-# Code
+# บทนำ
 
-Use code snippets and get the highlighting directly, and even types hover!
+ #### ปัจจุบันซอฟต์แวร์มีความซับซ้อนมากขึ้น ทำให้เกิดช่องโหว่ด้านความปลอดภัยได้ง่าย แม้ว่าจะมีเครื่องมือสำหรับตรวจสอบช่องโหว่ของซอร์สโค้ดอยู่แล้วแต่ส่วนใหญ่ยังใช้การตรวจสอบแบบกฎตายตัว ซึ่งไม่สามารถเข้าใจบริบทการทำงานของโค้ดได้ครบถ้วนและมักเกิดการแจ้งเตือนผิดพลาด
+  
+<br>
 
-```ts [filename-example.ts] {all|4|6|6-7|9|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-import { computed, ref } from 'vue'
+ #### โครงงานนี้จึงมีแนวคิดในการนำปัญญาประดิษฐ์มาประยุกต์ใช้ในการวิเคราะห์ช่องโหว่ของซอร์สโค้ด เพื่อเป็นแนวทางในการออกแบบระบบตรวจสอบความปลอดภัย ที่มีความเหมาะสมและมีประสิทธิภาพมากขึ้น
+<br>
 
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
+## ประโยชน์ที่คาดว่าจะได้รับ
+- ได้ระบบตรวจสอบความปลอดภัยของซอร์สโค้ดแบบอัตโนมัติ 
+ตามมาตรฐาน OWASP ที่ช่วยลดข้อผิดพลาดด้านความปลอดภัยของซอฟต์แว
+- ได้แนวทางการประยุกต์ใช้ AI ในการวิเคราะห์ช่องโหว่
+เชิงบริบท ที่มีความแม่นยำและลดการแจ้งเตือนที่ไม่ถูกต้อง
+- นักศึกษามีความรู้และทักษะด้านการเขียนโปรแกรมอย่างปลอดภัยเพิ่มขึ้น จากการใช้งานระบบช่วยสอนพร้อมแนวทางการแก้ไข
+ที่ถูกต้องในทางการพัฒนาระบบวิเคราะห์ช่องโหว่ของซอฟต์แวร์
+ด้วย AI
 
-doubled.value = 2
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="342" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
 <style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
 </style>
 
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
-
 ---
-level: 2
+transition: fade-out
 ---
 
-# Shiki Magic Move
+# ระเบียบวิจัย
 
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
+ ในการพัฒนาเว็บแอปพลิเคชัน Smart Web App Pentest สําหรับการทดสอบเจาะระบบ web app โดยเฉพาะ มี
+วัตถุประสงค์หลักดังนี้
 
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
+1. การออกแบบและสร้าง <br>
+1.1 การสร้าง ออกแบบและพัฒนาเว็บแอปพลิเคชันสําหรับการทดสอบเจาะระบบที่รองรับการตรวจจับและวิเคราะห์
+ช่องโหว่ตามมาตรฐานสากล OWASP Top 10 <br>
+1.2 การประยุกต์เพื่อประยุกต์ใช้เทคโนโลยีโมเดลภาษาขนาดใหญ่ (LLMs) มาช่วยในการสร้าง Payload และวางกล
+ยุทธ์การโจมตีแบบอัตโนมัติ 
+2. เป้าหมายด้านการพัฒนา <br>
+2.1 การพัฒนา เพื่อพัฒนาระบบคัดกรองช่องโหว่ทางทฤษฎีและลดอัตราการแจ้งเตือนที่ผิดพลาดให้เหลือน้อยที่สุด <br>
+2.2 การระบุความแม่นยํา เพื่อประเมินประสิทธิภาพของระบบ ในด้านความสําเร็จของการค้นพบช่องโหว่ เปรียบเทียบ
+กับเครื่องมือทดสอบมาตรฐานในปัจจุบัน และวิเคราะห์ความคุ้มค่าด้านทรัพยากรและเวลาที่ใช้ในการทดสอบ
 
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
-
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
-```
+</style>
 
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
+---
+transition: fade-out
+---
+
+# สรุปความคืบหน้า
+
+ 
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>`, `<BlueSky/>`, and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
+</style>
 
 ---
 src: ./slides_part2.md
