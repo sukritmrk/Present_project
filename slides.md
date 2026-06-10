@@ -160,7 +160,296 @@ transition: fade-out
 
 # สรุปความคืบหน้า
 
- 
+#### นี้คือขั้นตอนและการสรุปความคืบหน้าของโครงงานวิจัย
+<br>
+
+- System Architecture
+- Scan Workflow
+- Baseline Scanner Method
+- OWASP ZAP Full Scan Method
+- AI Privacy Method
+
+<br>
+
+#### โดยเนื้อหาจะเป็นตารางและการอธิบายว่าองค์ประกอบที่จำเป็นในลำดับถัดไปเรียงตามหัวข้อบนลงล่าง
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+transition: fade-out
+---
+
+# System Architecture
+
+<img src="C:\Users\PC\PresentProject\PresentProject\images\Capture1.PNG" class="w-400 mx-auto" />
+
+<img src="C:\Users\PC\PresentProject\PresentProject\images\Capture2.PNG" class="w-400 mx-auto" />
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+transition: fade-out
+---
+
+# Scan Workflow
+
+<img src="C:\Users\PC\PresentProject\PresentProject\images\3.PNG" class="w-130 mx-auto" />
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+layout: two-cols
+transition: fade-out
+---
+
+# Baseline Scanner Method
+
+#### Response Analysis
+- GET target URL จริง
+- อ่าน status code
+- อ่าน headers
+- ดึงลิงก์host เดียวกัน
+
+<br>
+
+#### Security Checks
+- CSP
+- Clickjacking
+- X-Content-Type-Options
+- Referrer-Policy
+- Server disclosure
+
+::right::
+<br>
+<br>
+
+#### Cookie/File Checks
+- HttpOnly / Secure / SameSite
+- /.env
+- /.git/config
+- backup/config/phpinfo
+- directory listing
+
+<br>
+
+#### Input Signal
+- reflected parameter
+- evidence
+- risk
+- deduplicate
+- OWASP map
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+layout: two-cols
+transition: fade-out
+---
+
+# OWASP ZAP Full Scan Method
+<br>
+
+#### ZAP Pipeline
+- สร้าง ZAP session ใหม่
+- สร้าง context และ include เฉพาะ base URL
+- Traditional Spider
+- AJAX Spider
+- Passive Scan
+- Active Scan ด้วย scan policy
+
+::right::
+<br>
+<br>
+
+#### Scope Control
+- จำกัด URL เป้าหมาย
+- exclude static assets
+- exclude logout/signout
+- ตั้ง timeout และ thread ต่อ host
+- กรอง out-of-scope alerts
+
+<br>
+
+#### Report Normalization
+- group alert ซ้ำ
+- map ZAP tags/CWE/keyword
+- เรียงตาม risk/confidence
+- ส่ง ส่ JSON ให้frontend
+- ใช้ AI explanation ต่อได้
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+layout: two-cols
+transition: fade-out
+---
+
+# AI Privacy Method
+<br>
+
+#### AI Input
+- title
+- risk
+- CWE ID
+- description
+- solution
+
+::right::
+<br>
+<br>
+
+#### Redaction
+- api_key / token / secret
+- Authorization header
+- Cookie / Set-Cookie
+- private key / AWS key
+- email และ query string
+
+<br>
+
+#### Local Inference
+- AI_PROVIDER=ollama
+- ALLOW_EXTERNAL_AI=false
+- OLLAMA_HOST=localhost
+- qwen2.5:7b
+- prompt ภาษาไทย
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+transition: fade-out
+---
+
+# Technology Stack
+สถาปัตยกรรมแบ่งเป็น 4 กลุ่มหลัก: UI, API, Scanner และ AI
+
+<img src="C:\Users\PC\PresentProject\PresentProject\images\4.PNG" class="w-400 mx-auto" />
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+transition: fade-out
+---
+
+# Backend API
+
+FastAPI เป็นแกนกลางที่รับคำสั่งจาก สั่ UI และประสาน scanner/AI
+
+<img src="C:\Users\PC\PresentProject\PresentProject\images\5.PNG" class="w-400 mx-auto" />
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+transition: fade-out
+---
+
+# Infrastructure for Full Scan
+
+Docker Compose เตรียม service สำ หรับงานสแกนแบบครบวงจร
+
+<img src="C:\Users\PC\PresentProject\PresentProject\images\6.PNG" class="w-400 mx-auto" />
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+transition: fade-out
+---
+
+# Local LLM Environment
+
+Ollama ถูกใช้เช้ป็นค่าเริ่มต้นเพื่อให้AI ทำงานในเครื่องเดียวกัน
+
+<img src="C:\Users\PC\PresentProject\PresentProject\images\7.PNG" class="w-400 mx-auto" />
 
 <style>
 h1 {
