@@ -191,9 +191,9 @@ transition: fade-out
 
 # System Architecture
 
-<img src="C:\Users\PC\PresentProject\PresentProject\images\Capture1.PNG" class="w-400 mx-auto" />
+<img src=".\images\Capture1.PNG" class="w-400 mx-auto" />
 
-<img src="C:\Users\PC\PresentProject\PresentProject\images\Capture2.PNG" class="w-400 mx-auto" />
+<img src=".\images\Capture2.PNG" class="w-400 mx-auto" />
 
 <style>
 h1 {
@@ -213,7 +213,7 @@ transition: fade-out
 
 # Scan Workflow
 
-<img src="C:\Users\PC\PresentProject\PresentProject\images\3.PNG" class="w-130 mx-auto" />
+<img src=".\images\3.PNG" class="w-130 mx-auto" />
 
 <style>
 h1 {
@@ -383,7 +383,7 @@ transition: fade-out
 # Technology Stack
 สถาปัตยกรรมแบ่งเป็น 4 กลุ่มหลัก: UI, API, Scanner และ AI
 
-<img src="C:\Users\PC\PresentProject\PresentProject\images\4.PNG" class="w-400 mx-auto" />
+<img src=".\images\4.PNG" class="w-400 mx-auto" />
 
 <style>
 h1 {
@@ -405,7 +405,7 @@ transition: fade-out
 
 FastAPI เป็นแกนกลางที่รับคำสั่งจาก สั่ UI และประสาน scanner/AI
 
-<img src="C:\Users\PC\PresentProject\PresentProject\images\5.PNG" class="w-400 mx-auto" />
+<img src=".\images\5.PNG" class="w-400 mx-auto" />
 
 <style>
 h1 {
@@ -427,7 +427,7 @@ transition: fade-out
 
 Docker Compose เตรียม service สำ หรับงานสแกนแบบครบวงจร
 
-<img src="C:\Users\PC\PresentProject\PresentProject\images\6.PNG" class="w-400 mx-auto" />
+<img src=".\images\6.PNG" class="w-400 mx-auto" />
 
 <style>
 h1 {
@@ -449,7 +449,7 @@ transition: fade-out
 
 Ollama ถูกใช้เช้ป็นค่าเริ่มต้นเพื่อให้AI ทำงานในเครื่องเดียวกัน
 
-<img src="C:\Users\PC\PresentProject\PresentProject\images\7.PNG" class="w-400 mx-auto" />
+<img src=".\images\7.PNG" class="w-400 mx-auto" />
 
 <style>
 h1 {
