@@ -82,386 +82,73 @@ layoutClass: gap-16
 uint_32t Payload = Malware + Insecure trust;
 ```
 <br>
-<br>
 สารบัญรวมหัวข้อรายงานโครงงานวิจัย เพื่อง่ายต่อการค้นหาและเข้าชมเนื้อหา
+<br>
+<br>
+
+1. Presentation Cover
+2. What is Smart Web App Pen Test?
+3. สารบัญ
+4. Wabpentest
+5. ภาพรวม
+   - 1. หัวข้อการนำเสนอ
 
 ::right::
 
-<Toc text-sm minDepth="1" maxDepth="2" />
+6. ส่วนที่ 1
+   - 1. ที่มาและความสำคัญ
+   - 2. วัตถุประสงค์และขอบเขต
+   - 3. การแบ่งหน้าที่
+
+<br>
+ 
+7. ส่วนที่ 2
+
+   - 1. ขั้นตอนดำเนินงาน
+   - 2. สถาปัตยกรรมระบบ
+   - 3. Workflow การสแกน
+   - 4. วิธีตรวจช่องโหว่
+   - 5. AI และการป้องกันข้อมูลหลุด
+   - 6. การประเมินผล
+
 
 ---
-transition: fade-out
+layout: two-cols
+layoutClass: gap-16
 ---
 
-# บทนำ
+# สารบัญ
 
- #### ปัจจุบันซอฟต์แวร์มีความซับซ้อนมากขึ้น ทำให้เกิดช่องโหว่ด้านความปลอดภัยได้ง่าย แม้ว่าจะมีเครื่องมือสำหรับตรวจสอบช่องโหว่ของซอร์สโค้ดอยู่แล้วแต่ส่วนใหญ่ยังใช้การตรวจสอบแบบกฎตายตัว ซึ่งไม่สามารถเข้าใจบริบทการทำงานของโค้ดได้ครบถ้วนและมักเกิดการแจ้งเตือนผิดพลาด
+<br>
+
+8. ส่วนที่ 3
+   - 1. ซอฟต์แวร์และอุปกรณ์
+   - 2. Technology Stack
+   - 3. API และ Infrastructure
   
-<br>
-
- #### โครงงานนี้จึงมีแนวคิดในการนำปัญญาประดิษฐ์มาประยุกต์ใช้ในการวิเคราะห์ช่องโหว่ของซอร์สโค้ด เพื่อเป็นแนวทางในการออกแบบระบบตรวจสอบความปลอดภัย ที่มีความเหมาะสมและมีประสิทธิภาพมากขึ้น
-<br>
-
-## ประโยชน์ที่คาดว่าจะได้รับ
-- ได้ระบบตรวจสอบความปลอดภัยของซอร์สโค้ดแบบอัตโนมัติ 
-ตามมาตรฐาน OWASP ที่ช่วยลดข้อผิดพลาดด้านความปลอดภัยของซอฟต์แว
-- ได้แนวทางการประยุกต์ใช้ AI ในการวิเคราะห์ช่องโหว่
-เชิงบริบท ที่มีความแม่นยำและลดการแจ้งเตือนที่ไม่ถูกต้อง
-- นักศึกษามีความรู้และทักษะด้านการเขียนโปรแกรมอย่างปลอดภัยเพิ่มขึ้น จากการใช้งานระบบช่วยสอนพร้อมแนวทางการแก้ไข
-ที่ถูกต้องในทางการพัฒนาระบบวิเคราะห์ช่องโหว่ของซอฟต์แวร์
-ด้วย AI
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-transition: fade-out
----
-
-# ระเบียบวิจัย
-
- ในการพัฒนาเว็บแอปพลิเคชัน Smart Web App Pentest สําหรับการทดสอบเจาะระบบ web app โดยเฉพาะ มี
-วัตถุประสงค์หลักดังนี้
-
-1. การออกแบบและสร้าง <br>
-1.1 การสร้าง ออกแบบและพัฒนาเว็บแอปพลิเคชันสําหรับการทดสอบเจาะระบบที่รองรับการตรวจจับและวิเคราะห์
-ช่องโหว่ตามมาตรฐานสากล OWASP Top 10 <br>
-1.2 การประยุกต์เพื่อประยุกต์ใช้เทคโนโลยีโมเดลภาษาขนาดใหญ่ (LLMs) มาช่วยในการสร้าง Payload และวางกล
-ยุทธ์การโจมตีแบบอัตโนมัติ 
-2. เป้าหมายด้านการพัฒนา <br>
-2.1 การพัฒนา เพื่อพัฒนาระบบคัดกรองช่องโหว่ทางทฤษฎีและลดอัตราการแจ้งเตือนที่ผิดพลาดให้เหลือน้อยที่สุด <br>
-2.2 การระบุความแม่นยํา เพื่อประเมินประสิทธิภาพของระบบ ในด้านความสําเร็จของการค้นพบช่องโหว่ เปรียบเทียบ
-กับเครื่องมือทดสอบมาตรฐานในปัจจุบัน และวิเคราะห์ความคุ้มค่าด้านทรัพยากรและเวลาที่ใช้ในการทดสอบ
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-transition: fade-out
----
-
-# สรุปความคืบหน้า
-
-#### นี้คือขั้นตอนและการสรุปความคืบหน้าของโครงงานวิจัย
-<br>
-
-- System Architecture
-- Scan Workflow
-- Baseline Scanner Method
-- OWASP ZAP Full Scan Method
-- AI Privacy Method
-
-<br>
-
-#### โดยเนื้อหาจะเป็นตารางและการอธิบายว่าองค์ประกอบที่จำเป็นในลำดับถัดไปเรียงตามหัวข้อบนลงล่าง
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-transition: fade-out
----
-
-# System Architecture
-
-<img src=".\images\Capture1.PNG" class="w-400 mx-auto" />
-
-<img src=".\images\Capture2.PNG" class="w-400 mx-auto" />
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-transition: fade-out
----
-
-# Scan Workflow
-
-<img src=".\images\3.PNG" class="w-130 mx-auto" />
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-layout: two-cols
-transition: fade-out
----
-
-# Baseline Scanner Method
-
-#### Response Analysis
-- GET target URL จริง
-- อ่าน status code
-- อ่าน headers
-- ดึงลิงก์host เดียวกัน
-
-<br>
-
-#### Security Checks
-- CSP
-- Clickjacking
-- X-Content-Type-Options
-- Referrer-Policy
-- Server disclosure
+9. ส่วนที่ 4
+   - 1. ความคืบหน้า
+   - 2. สถานะล่าสุดของโครงงาน
+   - 3. หลักฐานผลสแกนจริง
+   - 4. หลักฐาน Unit Test
 
 ::right::
-<br>
-<br>
 
-#### Cookie/File Checks
-- HttpOnly / Secure / SameSite
-- /.env
-- /.git/config
-- backup/config/phpinfo
-- directory listing
+<br> <br> <br>
 
-<br>
-
-#### Input Signal
-- reflected parameter
-- evidence
-- risk
-- deduplicate
-- OWASP map
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-layout: two-cols
-transition: fade-out
----
-
-# OWASP ZAP Full Scan Method
-<br>
-
-#### ZAP Pipeline
-- สร้าง ZAP session ใหม่
-- สร้าง context และ include เฉพาะ base URL
-- Traditional Spider
-- AJAX Spider
-- Passive Scan
-- Active Scan ด้วย scan policy
-
-::right::
-<br>
-<br>
-
-#### Scope Control
-- จำกัด URL เป้าหมาย
-- exclude static assets
-- exclude logout/signout
-- ตั้ง timeout และ thread ต่อ host
-- กรอง out-of-scope alerts
+10. ส่วนที่ 5
+   - 1. ชิ้นงาน
+   - 2. หน้าจอหลักและการเลือก Module
+   - 3. Dashboard รายงานผล
+   - 4. รายละเอียดช่องโหว่
+   - 5. AI Explanation
+   - 6. แนวทางสาธิตหน้าห้อง
+   - 7. ข้อจำกัดและแนวทางพัฒนาต่อ
 
 <br>
 
-#### Report Normalization
-- group alert ซ้ำ
-- map ZAP tags/CWE/keyword
-- เรียงตาม risk/confidence
-- ส่ง ส่ JSON ให้frontend
-- ใช้ AI explanation ต่อได้
+11. สรุปผลโครงงาน
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-layout: two-cols
-transition: fade-out
----
-
-# AI Privacy Method
-<br>
-
-#### AI Input
-- title
-- risk
-- CWE ID
-- description
-- solution
-
-::right::
-<br>
-<br>
-
-#### Redaction
-- api_key / token / secret
-- Authorization header
-- Cookie / Set-Cookie
-- private key / AWS key
-- email และ query string
-
-<br>
-
-#### Local Inference
-- AI_PROVIDER=ollama
-- ALLOW_EXTERNAL_AI=false
-- OLLAMA_HOST=localhost
-- qwen2.5:7b
-- prompt ภาษาไทย
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-transition: fade-out
----
-
-# Technology Stack
-สถาปัตยกรรมแบ่งเป็น 4 กลุ่มหลัก: UI, API, Scanner และ AI
-
-<img src=".\images\4.PNG" class="w-400 mx-auto" />
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-transition: fade-out
----
-
-# Backend API
-
-FastAPI เป็นแกนกลางที่รับคำสั่งจาก สั่ UI และประสาน scanner/AI
-
-<img src=".\images\5.PNG" class="w-400 mx-auto" />
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-transition: fade-out
----
-
-# Infrastructure for Full Scan
-
-Docker Compose เตรียม service สำ หรับงานสแกนแบบครบวงจร
-
-<img src=".\images\6.PNG" class="w-400 mx-auto" />
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-transition: fade-out
----
-
-# Local LLM Environment
-
-Ollama ถูกใช้เช้ป็นค่าเริ่มต้นเพื่อให้AI ทำงานในเครื่องเดียวกัน
-
-<img src=".\images\7.PNG" class="w-400 mx-auto" />
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
 
 ---
 src: ./slides_part2.md
